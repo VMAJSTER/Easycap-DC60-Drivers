@@ -1,0 +1,477 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;                                                                    ;
+; STK1160.INF -- Installation information for Syntek USB2.0 STK-1160 ;
+;                                                                    ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Version]
+CatalogFile=Syntek1160.cat
+signature="$CHICAGO$"
+Class=Media
+ClassGUID={4d36e96c-e325-11ce-bfc1-08002be10318}
+Provider=%ProviderName%
+DriverVer=06/28/2007,6.10.70.001
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%MsftMfg%=Syntek,NT,NTamd64
+
+[SourceDisksNames]
+1=%Syntek.Disk1%,,,
+
+[SourceDisksFiles.x86]
+StkCMini.sys=1,.\x86,
+StkCPipe.sys = 1,.\x86,
+StkCProp.ax=1
+StkCSrv.exe = 1
+StkSSrv.dll = 1
+StkCWIA.dll = 1
+StkCTW.ds = 1
+StkC112X.exe = 1
+StkUnist.exe = 1
+VideoView.exe = 1
+
+[SourceDisksFiles.amd64]
+StkCMini.sys=1,.\x64,
+StkCPipe.sys = 1,.\x64,
+StkCProp.ax=1
+StkCSrv.exe = 1
+StkSSrv.dll = 1
+StkCWIA.dll = 1
+StkCTW.ds = 1
+StkC112X.exe = 1
+StkUnist.exe = 1
+VideoView.exe = 1
+
+[DestinationDirs]
+Syntek.CopyDrivers = 10,system32\drivers
+Syntek.CopyFilters = 11
+Syntek.CopyService = 11
+Syntek.CopyStiApp = 10
+Syntek.CopyTwain = 10,twain_32\STK1160
+SyntekAmd64.CopyFilters = 10,SysWow64
+
+;---------------------------------------------------------------
+;              M I C R O S O F T
+;
+;                 T E S T C A P 
+;---------------------------------------------------------------
+
+[Syntek]
+%Syntek.DeviceDescM811%=SyntekM811.Device,USB\Vid_05E1&Pid_0408&MI_00
+%Syntek.DeviceDescM811%=SyntekM811.Device,USB\Vid_05E1&Pid_0408
+%Syntek.DeviceDescM811%=SyntekM811.Device,USB\Vid_05E1&Pid_0400&MI_00
+%Syntek.DeviceDescM811%=SyntekM811.Device,USB\Vid_05E1&Pid_0400
+
+[Syntek.NT]
+%Syntek.DeviceDescM811%=SyntekM811.Device.XP,USB\Vid_05E1&Pid_0408&MI_00
+%Syntek.DeviceDescM811%=SyntekM811.Device.XP,USB\Vid_05E1&Pid_0408
+%Syntek.DeviceDescM811%=SyntekM811.Device.XP,USB\Vid_05E1&Pid_0400&MI_00
+%Syntek.DeviceDescM811%=SyntekM811.Device.XP,USB\Vid_05E1&Pid_0400
+
+[Syntek.NTamd64]
+%Syntek.DeviceDescM811%=SyntekM811.Device.NTamd64,USB\Vid_05E1&Pid_0408&MI_00
+%Syntek.DeviceDescM811%=SyntekM811.Device.NTamd64,USB\Vid_05E1&Pid_0408
+%Syntek.DeviceDescM811%=SyntekM811.Device.NTamd64,USB\Vid_05E1&Pid_0400&MI_00
+%Syntek.DeviceDescM811%=SyntekM811.Device.NTamd64,USB\Vid_05E1&Pid_0400
+
+[SyntekM811.Device]
+Include=    	ks.inf,kscaptur.inf, dshowext.inf
+Needs=      	KS.Registration,KSCAPTUR.Registration, DSHOWEXT.Registration
+SubClass=   	StillImage
+DeviceType= 	2
+DeviceSubType=	0x0
+Capabilities=	0x01
+Events=		Syntek.Events
+DeviceData=	Syntek.DeviceData
+ICMProfiles=    "sRGB Color Space Profile.icm"
+AddReg=     	Syntek.AddReg, SyntekM811.AddSetReg, Syntek.SXGA.AddReg, Syntek.SXGA.AddUninstallReg
+UpdateInis=	SYNTEK.UpdateIni
+CopyFiles=  	Syntek.CopyDrivers,Syntek.CopyFilters,Syntek.CopyService,Syntek.CopyStiApp,Syntek.CopyTwain
+
+[SyntekM811.Device.NT]
+Include=    	ks.inf,kscaptur.inf, dshowext.inf
+Needs=      	KS.Registration,KSCAPTUR.Registration.NT, DSHOWEXT.Registration
+;SubClass=   	StillImage
+;DeviceType= 	2
+;DeviceSubType=	0x0
+;Capabilities=	0x01
+;Events=		Syntek.Events
+;DeviceData=	Syntek.DeviceData
+;ICMProfiles=    "sRGB Color Space Profile.icm"
+;AddReg=     	Syntek.AddReg, SyntekM811.AddSetReg, Syntek.SXGA.AddReg, Syntek.SXGA.AddUninstallReg
+AddReg=     	Syntek.AddReg, SyntekM811.AddSetReg
+;UpdateInis=	SYNTEK.UpdateIni
+;CopyFiles=  	Syntek.CopyDrivers,Syntek.CopyFilters,Syntek.CopyService,Syntek.CopyStiApp,Syntek.CopyTwain
+CopyFiles=  	Syntek.CopyDrivers
+
+
+[SyntekM811.Device.XP]
+Include=    	ks.inf,kscaptur.inf, dshowext.inf
+Needs=      	KS.Registration,KSCAPTUR.Registration.NT, DSHOWEXT.Registration
+;SubClass=   	StillImage
+;DeviceType= 	2
+;DeviceSubType=	0x0
+;Capabilities=	0x01
+;Events=		Syntek.Events
+;DeviceData=	Syntek.DeviceData
+;ICMProfiles=    "sRGB Color Space Profile.icm"
+;AddReg=     	Syntek.AddReg, SyntekM811.AddSetReg, Syntek.SXGA.AddReg, Syntek.SXGA.AddUninstallReg
+AddReg=     	Syntek.AddReg, SyntekM811.AddSetReg
+;UpdateInis=	SYNTEK.UpdateIni
+;CopyFiles=  	Syntek.CopyDrivers,Syntek.CopyFilters,Syntek.CopyService,Syntek.CopyStiApp,Syntek.CopyTwain
+CopyFiles=  	Syntek.CopyDrivers, Syntek.CopyFilters
+
+[SyntekM811.Device.NTamd64]
+Include=    	ks.inf,kscaptur.inf, dshowext.inf
+Needs=      	KS.Registration,KSCAPTUR.Registration.NT, DSHOWEXT.Registration
+SubClass=   	StillImage
+DeviceType= 	3
+DeviceSubType=	0x0
+Capabilities=	0x31
+Events=		Syntek.Events
+DeviceData=	Syntek.DeviceData
+ICMProfiles=    "sRGB Color Space Profile.icm"
+AddReg=     	SyntekAmd64.AddReg, SyntekM811.AddSetReg, Syntek.SXGA.AddReg, Syntek.NTamd64.SXGA.AddUninstallReg
+UpdateInis=	SYNTEK.UpdateIni
+CopyFiles=  	Syntek.CopyDrivers,SyntekAmd64.CopyFilters,Syntek.CopyService,Syntek.CopyStiApp,Syntek.CopyTwain
+
+[Syntek.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,StkCMini.sys
+HKR,,HardwareConfig,1,1
+HKR,,PageOutWhenUnopened,3,01
+;HKR,,DontSuspendIfStreamsAreRunning,3,01
+HKR,,PowerDownWhenUnopened,3,01
+;HKR,,NBSelectiveSuspend,3,00
+HKR,,OkToHibernate,3,01
+HKR,,CreateFileName,,"Syntek"
+
+; Plug-In Custom Control Interface
+HKCR,CLSID\{9c073192-998b-4ba2-a0d1-47f755e94972},,,%PlugIn_CustomControlInterface%
+HKCR,CLSID\{9c073192-998b-4ba2-a0d1-47f755e94972}\InprocServer32,,,StkCProp.ax
+HKCR,CLSID\{9c073192-998b-4ba2-a0d1-47f755e94972}\InprocServer32,ThreadingModel,,Both
+;; This IID is aggregated for the filter given the CLSID of the property set
+HKLM,System\CurrentControlSet\Control\MediaInterfaces\{9c073192-998b-4ba2-a0d1-47f755e94972},,,%PlugIn_CustomControlInterface%
+HKLM,System\CurrentControlSet\Control\MediaInterfaces\{9c073192-998b-4ba2-a0d1-47f755e94972},IID,1,92,31,07,9c,8b,99,a2,4b,a0,d1,47,f7,55,e9,49,72
+
+; Plug-In Custom Control Property Page
+HKCR,CLSID\{9c073193-998b-4ba2-a0d1-47f755e94972},,,%PlugIn_CustomControlPropertyPage%
+HKCR,CLSID\{9c073193-998b-4ba2-a0d1-47f755e94972}\InprocServer32,,,StkCProp.ax
+HKCR,CLSID\{9c073193-998b-4ba2-a0d1-47f755e94972}\InprocServer32,ThreadingModel,,Both
+; Associate the property set with the above property page
+HKLM,System\CurrentControlSet\Control\MediaSets\{9c073192-998b-4ba2-a0d1-47f755e94972}\PropertyPages\{9c073193-998b-4ba2-a0d1-47f755e94972},,,%PlugIn_CustomControlPropertyPage%
+
+; Register the name of service
+;HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",StkCSrv,,"rundll32 %10%\System32\StkSSrv.dll, StartService StkSSrv"
+
+;register Wia
+;HKR,,USDClass,,"{0527D1D0-88C2-11D2-82C7-00C04F8EC183}"
+;HKCR,CLSID\{BF054420-5551-4AC8-B986-884E40410045},,,"Syntek WIA UI Extension"
+;HKCR,CLSID\{BF054420-5551-4AC8-B986-884E40410045}\InProcServer32,,,%11%\StkCWIA.dll
+;HKCR,CLSID\{BF054420-5551-4AC8-B986-884E40410045}\InProcServer32,ThreadingModel,,"Both"
+;HKCR,CLSID\{BF054420-5551-4AC8-B986-884E40410045}\shellex\WiaDialogExtensionHandlers\{BF054420-5551-4AC8-B986-884E40410045},,,"Sample extension"
+;HKCR,CLSID\{BF054420-5551-4AC8-B986-884E40410045}\shellex\ContextMenuHandlers\{BF054420-5551-4AC8-B986-884E40410045},,,"Sample extension"
+;HKCR,CLSID\{BF054420-5551-4AC8-B986-884E40410045}\shellex\PropertySheetHandlers\{BF054420-5551-4AC8-B986-884E40410045},,,"Sample extension"
+;HKLM,Software\Microsoft\Windows\CurrentVersion\RunOnce,StkCWIA,,"rundll32 %11%\regsvr32 /s %11%\StkCWIA.dll"
+;HKLM,Software\Microsoft\Windows\CurrentVersion\RunOnce,StkCWIA,,"%11%\regsvr32 /s %11%\StkCWIA.dll"
+
+[SyntekAmd64.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,StkCMini.sys
+HKR,,HardwareConfig,1,1
+HKR,,PageOutWhenUnopened,3,01
+;HKR,,DontSuspendIfStreamsAreRunning,3,01
+HKR,,PowerDownWhenUnopened,3,01
+;HKR,,NBSelectiveSuspend,3,00
+HKR,,OkToHibernate,3,01
+HKR,,CreateFileName,,"Syntek"
+
+; Plug-In Custom Control Interface
+HKCR,Wow6432Node\CLSID\{9c073192-998b-4ba2-a0d1-47f755e94972},,,%PlugIn_CustomControlInterface%
+HKCR,Wow6432Node\CLSID\{9c073192-998b-4ba2-a0d1-47f755e94972}\InprocServer32,,,%10%\SysWow64\StkCProp.ax
+HKCR,Wow6432Node\CLSID\{9c073192-998b-4ba2-a0d1-47f755e94972}\InprocServer32,ThreadingModel,,Both
+;; This IID is aggregated for the filter given the CLSID of the property set
+HKLM,System\CurrentControlSet\Control\MediaInterfaces\{9c073192-998b-4ba2-a0d1-47f755e94972},,,%PlugIn_CustomControlInterface%
+HKLM,System\CurrentControlSet\Control\MediaInterfaces\{9c073192-998b-4ba2-a0d1-47f755e94972},IID,1,92,31,07,9c,8b,99,a2,4b,a0,d1,47,f7,55,e9,49,72
+
+; Plug-In Custom Control Property Page
+HKCR,Wow6432Node\CLSID\{9c073193-998b-4ba2-a0d1-47f755e94972},,,%PlugIn_CustomControlPropertyPage%
+HKCR,Wow6432Node\CLSID\{9c073193-998b-4ba2-a0d1-47f755e94972}\InprocServer32,,,%10%\SysWow64\StkCProp.ax
+HKCR,Wow6432Node\CLSID\{9c073193-998b-4ba2-a0d1-47f755e94972}\InprocServer32,ThreadingModel,,Both
+; Associate the property set with the above property page
+HKLM,System\CurrentControlSet\Control\MediaSets\{9c073192-998b-4ba2-a0d1-47f755e94972}\PropertyPages\{9c073193-998b-4ba2-a0d1-47f755e94972},,,%PlugIn_CustomControlPropertyPage%
+
+; Register the name of service
+;HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",StkCSrv,,"rundll32 %10%\System32\StkSSrv.dll,StartService StkSSrv"
+
+;register Wia
+HKR,,USDClass,,"{0527D1D0-88C2-11D2-82C7-00C04F8EC183}"
+HKCR,CLSID\{BF054420-5551-4AC8-B986-884E40410045},,,"Syntek WIA UI Extension"
+HKCR,CLSID\{BF054420-5551-4AC8-B986-884E40410045}\InProcServer32,,,%11%\StkCWIA.dll
+HKCR,CLSID\{BF054420-5551-4AC8-B986-884E40410045}\InProcServer32,ThreadingModel,,"Both"
+HKCR,CLSID\{BF054420-5551-4AC8-B986-884E40410045}\shellex\WiaDialogExtensionHandlers\{BF054420-5551-4AC8-B986-884E40410045},,,"Sample extension"
+HKCR,CLSID\{BF054420-5551-4AC8-B986-884E40410045}\shellex\ContextMenuHandlers\{BF054420-5551-4AC8-B986-884E40410045},,,"Sample extension"
+HKCR,CLSID\{BF054420-5551-4AC8-B986-884E40410045}\shellex\PropertySheetHandlers\{BF054420-5551-4AC8-B986-884E40410045},,,"Sample extension"
+HKLM,Software\Microsoft\Windows\CurrentVersion\RunOnce,StkCWIA,,"rundll32 %11%\regsvr32 /s %11%\StkCWIA.dll"
+;HKLM,Software\Microsoft\Windows\CurrentVersion\RunOnce,StkCWIA,,"%11%\regsvr32 /s %11%\StkCWIA.dll"
+
+[Syntek.SXGA.AddReg]
+; Register the name of application
+;HKLM,"Software\Microsoft\Windows\CurrentVersion\StillImage\Registered Applications",%StillAPP%,,"%10%\StkC112X.exe /StiDevice:%1 /StiEvent:%2"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\StillImage\Registered Applications",%StillAPP%,,"%10%\StkC112X.exe %1"
+HKLM,"Software\Microsoft\Windows NT\CurrentVersion\DC112X","DeviceName",,%Syntek.FriendlyNameSXGA%
+HKLM,"Software\Microsoft\Windows NT\CurrentVersion\DC112X","DeviceSelect",0x00010001,0x00
+HKLM,"Software\Microsoft\Windows NT\CurrentVersion\DC112X","PreviewApplication",,"%10%\VideoView.exe"
+
+[Syntek.SXGA.AddUninstallReg]
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\%Syntek.FriendlyNameSXGA%","DisplayName",0x00000000,"%Syntek.FriendlyNameSXGA%"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\%Syntek.FriendlyNameSXGA%","UninstallString",0x00000000,"%10%\StkUnist.exe"
+
+[Syntek.NTamd64.SXGA.AddUninstallReg]
+HKLM,"Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\%Syntek.FriendlyNameSXGA%","DisplayName",0x00000000,"%Syntek.FriendlyNameSXGA%"
+HKLM,"Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\%Syntek.FriendlyNameSXGA%","UninstallString",0x00000000,"%10%\StkUnist.exe"
+
+[SyntekM811.AddSetReg]
+HKR,"Settings","######",0x00010001,0xFF00FF00
+HKR,"Settings","Board Vendor",0x00010001,0x00
+HKR,"Settings","Board Type",0x00010001,0x00
+HKR,"Settings","Power Saving",0x00010001,0x01
+HKR,"Settings","Pin Type",0x00010001,0x00
+HKR,"Settings","Fast Format Enumeration",0x00010001,0x00
+HKR,"Settings","Video Source",0x00010001,0x00
+HKR,"Settings","Video Standard",0x00010001,0x01
+HKR,"Settings","Audio Input Configuration",0x00010001,0x00
+HKR,"Settings","Audio Output Configuration",0x00010001,0x02
+HKR,"Settings","Video Input Configuration",0x00010001,0x01
+HKR,"Settings","Video Output Configuration",0x00010001,0x06
+HKR,"Settings","VBI Output Configuration",0x00010001,0x00
+HKR,"Settings","Enable GPIO9 Polling Thread",0x00010001,0x00
+HKR,"Settings","MJPGMode",0x00010001,0x00
+
+; Default Settings
+HKR,"Settings\Default\Decoder","Flip Horizontal",0x00010001,0x00
+HKR,"Settings\Default\Decoder","Flip Vertical",0x00010001,0x00
+HKR,"Settings\Default\Decoder","Decoder Type",0x00010001,0x00
+HKR,"Settings\Default\Decoder","Audio Type",0x00010001,0x00
+HKR,"Settings\Default\Decoder","Tuner Type",0x00010001,0x17
+HKR,"Settings\Default\Decoder","VBI",0x00010001,0x00
+HKR,"Settings\Default\Decoder","VBI Format",0x00010001,0x55
+HKR,"Settings\Default\Decoder","Brightness",0x00010001,0x80
+HKR,"Settings\Default\Decoder","Contrast",0x00010001,0x40
+HKR,"Settings\Default\Decoder","Hue",0x00010001,0xB4
+HKR,"Settings\Default\Decoder","Saturation",0x00010001,0x100
+HKR,"Settings\Default\Decoder","Sharpness",0x00010001,0x03
+HKR,"Settings\Default\Decoder","Gamma",0x00010001,0x1A
+HKR,"Settings\Default\Decoder","White Balance",0x00010001,0x80
+HKR,"Settings\Default\Decoder","Back Light",0x00010001,0x80
+HKR,"Settings\Default\Decoder","Color Enable",0x00010001,0x00
+HKR,"Settings\Default\Decoder","AWB",0x00010001,0x00
+HKR,"Settings\Default\Decoder","Tuner Auto Scan Enable",0x00010001,0x00
+HKR,"Settings\Default\Decoder","Tuner TV Standard",0x00010001,0x01
+HKR,"Settings\Default\Decoder","MTS Type",0x00010001,0x00
+HKR,"Settings\Default\Decoder","Auto Standard Detection",0x00010001,0x00
+
+; Current Settings
+HKR,"Settings\Current\Decoder","Flip Horizontal",0x00010001,0x00
+HKR,"Settings\Current\Decoder","Flip Vertical",0x00010001,0x00
+HKR,"Settings\Current\Decoder","Decoder Type",0x00010001,0x00
+HKR,"Settings\Current\Decoder","Audio Type",0x00010001,0x00
+HKR,"Settings\Current\Decoder","Tuner Type",0x00010001,0x17
+HKR,"Settings\Current\Decoder","VBI",0x00010001,0x00
+HKR,"Settings\Current\Decoder","VBI Format",0x00010001,0x55
+HKR,"Settings\Current\Decoder","Brightness",0x00010001,0x80
+HKR,"Settings\Current\Decoder","Contrast",0x00010001,0x40
+HKR,"Settings\Current\Decoder","Hue",0x00010001,0xB4
+HKR,"Settings\Current\Decoder","Saturation",0x00010001,0x100
+HKR,"Settings\Current\Decoder","Sharpness",0x00010001,0x03
+HKR,"Settings\Current\Decoder","Gamma",0x00010001,0x1A
+HKR,"Settings\Current\Decoder","White Balance",0x00010001,0x80
+HKR,"Settings\Current\Decoder","Back Light",0x00010001,0x80
+HKR,"Settings\Current\Decoder","Color Enable",0x00010001,0x00
+HKR,"Settings\Current\Decoder","AWB",0x00010001,0x00
+HKR,"Settings\Current\Decoder","Tuner Auto Scan Enable",0x00010001,0x00
+HKR,"Settings\Current\Decoder","Tuner TV Standard",0x00010001,0x01
+HKR,"Settings\Current\Decoder","MTS Type",0x00010001,0x00
+HKR,"Settings\Current\Decoder","Auto Standard Detection",0x00010001,0x00
+
+
+
+;add event registry setting for Vista
+;HKR,"Events\ButtonPressed","GUID",0x00000000,"{89FE3F32-23E1-450A-84F2-9CD69ABAB63E}"
+;HKR,"Events\ButtonPressed","LaunchApplications",0x00000000,"Syntek DC-112X Image Capture"
+
+;HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\%Syntek.DeviceDescM811%","DisplayName",0x00000000,"%Syntek.DeviceDescM811%"
+;HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\%Syntek.DeviceDescM811%","UninstallString",0x00000000,"%10%\StkUnist.exe"
+
+
+[Syntek.CopyDrivers]
+StkCMini.sys
+StkCPipe.sys
+
+[Syntek.CopyFilters]
+StkCProp.ax
+
+[SyntekAmd64.CopyFilters]
+StkCProp.ax
+
+[Syntek.CopyService]
+StkCSrv.exe
+StkSSrv.dll
+StkCWIA.dll
+
+[Syntek.CopyStiApp]
+StkC112X.exe
+VideoView.exe
+StkUnist.exe
+
+[Syntek.CopyTwain]
+StkCTW.ds
+
+[Syntek.KnownFiles]
+StkCMini.sys=safe
+
+[SyntekM811.Device.Interfaces]
+AddInterface={65e8773d-8f56-11d0-a3b9-00a0c9223196},%KSNAME_Filter%,VideoCaptureSXGA,
+AddInterface={6994AD05-93EF-11D0-A3CC-00A0C9223196},%KSNAME_Filter%,VideoCaptureSXGA,
+AddInterface={a799a800-a46d-11d0-a18c-00a02401dcd4},%KSNAME_Filter%,VideoTvTuner,
+AddInterface={a799a801-a46d-11d0-a18c-00a02401dcd4},%KSNAME_Filter%,VideoCrossbar,
+;AddInterface={a799a802-a46d-11d0-a18c-00a02401dcd4},%KSNAME_Filter%,VideoTvAudio,
+
+
+[SyntekM811.Device.NT.Interfaces]
+AddInterface={65e8773d-8f56-11d0-a3b9-00a0c9223196},%KSNAME_Filter%,VideoCaptureSXGA,
+AddInterface={6994AD05-93EF-11D0-A3CC-00A0C9223196},%KSNAME_Filter%,VideoCaptureSXGA,
+AddInterface={a799a800-a46d-11d0-a18c-00a02401dcd4},%KSNAME_Filter%,VideoTvTuner,
+AddInterface={a799a801-a46d-11d0-a18c-00a02401dcd4},%KSNAME_Filter%,VideoCrossbar,
+;AddInterface={a799a802-a46d-11d0-a18c-00a02401dcd4},%KSNAME_Filter%,VideoTvAudio,
+
+[SyntekM811.Device.XP.Interfaces]
+AddInterface={65e8773d-8f56-11d0-a3b9-00a0c9223196},%KSNAME_Filter%,VideoCaptureSXGA,
+AddInterface={6994AD05-93EF-11D0-A3CC-00A0C9223196},%KSNAME_Filter%,VideoCaptureSXGA,
+AddInterface={a799a800-a46d-11d0-a18c-00a02401dcd4},%KSNAME_Filter%,VideoTvTuner,
+AddInterface={a799a801-a46d-11d0-a18c-00a02401dcd4},%KSNAME_Filter%,VideoCrossbar,
+;AddInterface={a799a802-a46d-11d0-a18c-00a02401dcd4},%KSNAME_Filter%,VideoTvAudio,
+
+
+[SyntekM811.Device.NTamd64.Interfaces]
+AddInterface={65e8773d-8f56-11d0-a3b9-00a0c9223196},%KSNAME_Filter%,VideoCaptureSXGA,
+AddInterface={6994AD05-93EF-11D0-A3CC-00A0C9223196},%KSNAME_Filter%,VideoCaptureSXGA,
+AddInterface={a799a800-a46d-11d0-a18c-00a02401dcd4},%KSNAME_Filter%,VideoTvTuner,
+AddInterface={a799a801-a46d-11d0-a18c-00a02401dcd4},%KSNAME_Filter%,VideoCrossbar,
+;AddInterface={a799a802-a46d-11d0-a18c-00a02401dcd4},%KSNAME_Filter%,VideoTvAudio,
+
+
+[Syntek.DeviceData]
+Server=local
+UI DLL=sti.dll
+UI Class ID={BF054420-5551-4AC8-B986-884E40410045}
+TwainDS=%TwainDsName%
+SpecialInfo="UsbPC 2.0"
+
+[SYNTEK.UpdateIni]
+system.ini,drivers32,,"VIDC.I420=MSh263.drv"
+
+[VideoCaptureSXGA]
+AddReg=VideoCaptureSXGA.AddReg
+
+[VideoTvTuner]
+AddReg=VideoTvTuner.AddReg
+
+[VideoCrossbar]
+AddReg=VideoXBar.AddReg
+
+[VideoTvAudio]
+AddReg=VideoTvAudio.AddReg
+
+[VideoCaptureSXGA.AddReg]
+HKR,,CLSID,,{17CCA71B-ECD7-11D0-B908-00A0C9223196}
+HKR,,FriendlyName,,%Syntek.FriendlyNameSXGA%
+; IAMVideoCompression installed as static interface on both output pins
+
+[VideoTvTuner.AddReg]
+HKR,,CLSID,,{266EEE40-6C63-11cf-8A03-00AA006ECB65}
+HKR,,FriendlyName,,%Syntek.TvTuner%
+    
+[VideoXBar.AddReg]
+HKR,,CLSID,,{71F96460-78F3-11d0-A18C-00A0C9118956}
+HKR,,FriendlyName,,%Syntek.Crossbar%
+
+[VideoTvAudio.AddReg]
+HKR,,CLSID,,{71F96462-78F3-11d0-A18C-00A0C9118956}
+HKR,,FriendlyName,,%Syntek.TvAudio%
+
+
+[Syntek.Events]
+NewPicture=%NewPicture%,{89FE3F31-23E1-450A-84F2-9CD69ABAB63E},%StillAPP%
+ButtonPressed=%ButtonPressed%,{89FE3F32-23E1-450A-84F2-9CD69ABAB63E},%StillAPP%
+
+[SyntekM811.Device.Services]
+AddService = StkCMini,0x00000002,SyntekSXGA.ServiceInstall
+AddService = StkSSrv,0x00000000,StkSSrv.ServiceInstall
+
+[SyntekM811.Device.NT.Services]
+AddService = StkCMini,0x00000002,SyntekSXGA.ServiceInstall
+;AddService = StkSSrv,0x00000000,StkSSrv.ServiceInstall
+
+[SyntekM811.Device.XP.Services]
+AddService = StkCMini,0x00000002,SyntekSXGA.ServiceInstall
+AddService = StkSSrv,0x00000000,StkSSrv.ServiceInstall
+
+[SyntekM811.Device.NTamd64.Services]
+AddService = StkCMini,0x00000002,SyntekSXGA.ServiceInstall
+AddService = StkSSrv,0x00000000,StkSSrv.ServiceInstall
+
+[SyntekSXGA.ServiceInstall]
+DisplayName   = %Syntek.DisplayNameSXGA%
+ServiceType   = %SERVICE_KERNEL_DRIVER%
+StartType     = %SERVICE_DEMAND_START%
+ErrorControl  = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %10%\System32\Drivers\StkCMini.sys
+
+[StkSSrv.ServiceInstall]
+DisplayName   = %StkSSrvDisplayName%
+ServiceType   = %SERVICE_WIN32_OWN_PROCESS%
+StartType     = %SERVICE_AUTO_START%
+ErrorControl  = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %10%\System32\StkCSrv.exe
+
+;---------------------------------------------------------------
+;                S t r i n g s
+;---------------------------------------------------------------
+
+[Strings]
+
+;----------------
+; Non-Localizable
+;----------------
+
+SERVICE_KERNEL_DRIVER=1
+SERVICE_WIN32_OWN_PROCESS=16
+SERVICE_DEMAND_START=3
+SERVICE_AUTO_START=2
+SERVICE_ERROR_NORMAL=1
+
+;----------------
+; Localizable
+;----------------
+
+ProviderName = "Syntek"
+MsftMfg = "Syntek"
+Syntek.Disk1 = "Install Disk"
+Syntek.DeviceDescM811 = "STK1160 ATV BDA"
+Syntek.DisplayNameSXGA = "Syntek AVStream USB2.0 ATV"
+StkSSrvDisplayName = "Syntek AVStream USB2.0 ATV Service"
+Syntek.FriendlyNameSXGA = "USB2.0 ATV"
+NewPicture = "New Picture Captured"
+ButtonPressed = "Button Pressed"
+StillAPP = "Syntek STK-1160 Image Capture"
+TwainDsName = "Syntek STK-1160 TWAIN Image Capture"
+KSNAME_Filter = "{77E95FD6-7A3D-4f69-9723-582A8DD5C0A1}"
+PlugIn_CustomControlInterface="Syntek Custom Control Interface"
+PlugIn_CustomControlPropertyPage="Syntek Custom Control Property Page"
+Syntek.TvTuner=    "Syntek TvTuner"
+Syntek.Crossbar=   "Syntek Crossbar"
+Syntek.TvAudio=    "Syntek TvAudio"
